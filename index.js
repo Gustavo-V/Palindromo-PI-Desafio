@@ -1,71 +1,76 @@
-const pi = "999999999123141441777777777222222222141414141";
-
-const arr = pi.split('');
-let ranges = [];
-let rangesFinal = [];
-let aux = 0;
-let arrFinal = {
-    arr: ""
-};
-
-for(let i = 0; i < arr.length; i++){
-    for(c = i + 1; c < arr.length; c++){
-        ranges.push({value: arr[c], positionI: i, positionC: c});
+class PalindromePI{
+    constructor(){
+        this.pi;
+        this.rangeOfPalindromeInPi = 9;
+        this.piArr;
+        this.fullArr;
+        this.decreasingValuesArr;
+        this.firstNineValues;
     }
 
+    formatedPI(pi){
+        let piFormated = pi.toString();
+        if(piFormated.includes(".") === true){
+            piFormated = piFormated.replace(".",",");
+        }
+        piFormated = piFormated.slice(piFormated.lastIndexOf(",") + 1 , piFormated.length);
+        this.pi = piFormated;
+        this.piArr = piFormated.split('');
+        return piFormated;
+    }
+
+    firstNineValuesOfArr(){
+        let str = '';
+        for(let i = 0; i < 9; i++){
+            str += this.piArr[i];
+        }
+
+        this.firstNineValues = str;
+        return str;
+    }
+
+    createArrIteratingOneMoreValue(){
+        const arr = [];
+        for(let i = 0; i < this.piArr.length; i++){
+            if(i >= 8){
+                for(let j = i + 1; j < this.piArr.length; j++){
+                    arr.push({value: this.piArr[j], positionI: i, positionJ: j});
+                }
+            }
+        }
+        this.fullArr = arr;
+        return arr;
+    }
+
+    createArrWithValuesDecreasing(){
+        let Obj = {str: '', arr: [] };
+        for(let i = 0; i < this.fullArr.length; i++){
+            for(let j = 0; j < this.piArr.length; j++){
+                if(j == this.fullArr[i].positionJ - 1){
+                    if(this.fullArr[i].positionJ - this.fullArr[i].positionI == 1){
+                        Obj.str += ' ';
+                    }
+                    Obj.str += this.fullArr[i].value;
+                }
+            }
+        }   
+
+        Obj.arr = Obj.str.split(' ');
+        Obj.arr.shift();
+
+        this.decreasingValuesArr = Obj.arr;
+        return Obj.arr;
+    }
 }
 
-// console.log("value: " + ranges[i].value + " - positionI: " + ranges[i].positionI + " - positionC: " + ranges[i].positionC + " - Valor de I: " + i);
+const palindrome = new PalindromePI();
+palindrome.formatedPI("3,8888888888888888888888888888888888888888888889999999999999000000000000000");
+palindrome.firstNineValuesOfArr();
+palindrome.createArrIteratingOneMoreValue();
+palindrome.createArrWithValuesDecreasing();
 
-for(let i = 0; i < ranges.length; i++){
-    console.log(ranges[i]);
-    if(ranges[i].positionC % 9 == 0){
-        
-        
-    }
+palindrome.decreasingValuesArr.forEach(el =>{
+    console.log(el);
+});
 
-    if(ranges[i].positionC % 9 == 0){
-        //console.log("value: " + ranges[i].value + " - positionI: " + ranges[i].positionI + " - positionC: " + ranges[i].positionC + " - Valor de I: " + i);
-    }
-
-}
-
-console.log(arrFinal.arr);
-
-
-// const num = "999999999123141441777777777222222222141414141";
-
-// const numList = num.split('');
-// const numListReverse = numList.slice(0).reverse();
-// let teste = []
-// let firstRange = [];
-// let locales = [];
-
-// for(let i = 0; i < 28; i++){
-//     if(i < 9){
-//         firstRange.push({value: numList[i], position: i});
-//     }
-//     for(let c = i + 1; c < numList.length; c++){
-//         teste.push({valor: numList[c], positionC: c, positionI: i});
-        
-//         //Agora a regra é:
-//         // verificar os primeiros 9 números mediante ao positionI
-//         // De preferência usar outro for(em cima do que puxei para os novos vetores) que da certo
-//         /*
-//             9 primeiros números - positionI == 0;
-//             9 primeiros números - positionI == 1;
-//             9 primeitos números - positionI == 2;
-//             9 primeiros números - positionI == 3;
-//             ... até o 44(por meio de um loop é claro);
-//         */
-//     }
-// }
-
-// firstRange.forEach(el =>{
-//     console.log(el);
-// })
-
-
-// teste.forEach(el =>{
-//     console.log(el);
-// })
+console.log(palindrome.firstNineValues);
