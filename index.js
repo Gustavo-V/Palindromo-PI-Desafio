@@ -93,6 +93,7 @@ class PalindromePI {
 }
 
 let start = 1;
+let aux = 1000;
 
 const palindrome = new PalindromePI();
 
@@ -108,8 +109,10 @@ async function setStart(){
         if(palindrome.getFirstPalindrome.length != 0){
             if(palindrome.getFirstPalindrome[0].isPrime === true){
                 console.log(palindrome.getFirstPalindrome[0]);
+                console.log(aux);
                 console.error("Achou!");
             }else{
+                console.log(aux);
                 console.log(palindrome.getFirstPalindrome[0]);
             }
         }else{
@@ -118,6 +121,7 @@ async function setStart(){
     }
 
     start += 1000;
+    aux+=1000;
     setStart(start);
 }
 
