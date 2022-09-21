@@ -139,8 +139,10 @@ async function startVerification(){
             }else{
                 console.log("Nenhum Palindromo");
             }
-            start += 990;
-            counter += 990;
+
+            // It´s just to be sure if don´t jump none number
+            start += 1000 - (palindrome.rangeOfPalindromeInPi + 2);
+            counter += 1000 - (palindrome.rangeOfPalindromeInPi + 2);
             startVerification(start);
         }
     }
