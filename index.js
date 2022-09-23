@@ -1,7 +1,7 @@
 class PalindromePI {
     constructor() {
         this.pi;
-        this.rangeOfPalindromeInPi = 9;
+        this.rangeOfPalindromeInPi = 21;
         this.piArr;
         this.fullArr;
         this.decreasingValuesArr;
@@ -111,7 +111,7 @@ function showResponseIfIsPrime(object){
     console.log("Achou!");
     const divAppend = document.getElementById("append-palindrome-prime");
     const p = document.createElement('p');
-    p.innerHTML = `{value: ${object.getFirstPalindrome[0].value}, isPalindrome: ${object.getFirstPalindrome[0].isPalindrome}, isPrime: ${object.getFirstPalindrome[0].isPrime}`;
+    p.innerHTML = `{value: ${object.getFirstPalindrome[0].value}, isPalindrome: ${object.getFirstPalindrome[0].isPalindrome}, isPrime: ${object.getFirstPalindrome[0].isPrime}}`;
     divAppend.appendChild(p);
 }
 
@@ -138,6 +138,7 @@ async function startVerification(){
                 }
             }else{
                 console.log("Nenhum Palindromo");
+                console.log(counter);
             }
 
             // It´s just to be sure if don´t jump none number
@@ -154,5 +155,3 @@ startVerification();
     Hello, I'm from Brazil and My name is Gustavo of company XD Software - follow me in my linkedin: https://www.linkedin.com/in/gustavo-henrique-valdo
     Nice to meet You!
 */
-
-//  First palindrome prime range --> 129000 to 130000: 318272813
