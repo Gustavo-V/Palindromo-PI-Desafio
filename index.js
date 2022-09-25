@@ -74,7 +74,7 @@ class PalindromePI {
             if (reverseValues[i] === this.arrFinal[i]) {
                     arr.push(
                         {
-                            value: this.arrFinal[i], isPalindrome: true, isPrime: this.setIsPrime(this.arrFinal[i])
+                            value: this.arrFinal[i], isPalindrome: true, isPrime: this.isPrime(this.arrFinal[i])
                         }
                     );
             }
@@ -82,7 +82,7 @@ class PalindromePI {
         return arr;
     }
 
-    setIsPrime(num){
+    isPrime(num){
         for(let i = 2; i < num; i++){
             if(num % i === 0) {
                 return false;
